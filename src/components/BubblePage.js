@@ -19,7 +19,6 @@ const BubblePage = () => {
   };
 
   const deleteColor = (colorToDelete) => {
-    console.log(colors)
   };
 
   return (

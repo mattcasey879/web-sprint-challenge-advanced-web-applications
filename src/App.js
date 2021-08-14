@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
 import BubblePage from "./components/BubblePage";
+import Color from './components/Color'
 import "./styles.scss";
 import axiosWithAuth from "./helpers/axiosWithAuth";
 
@@ -26,8 +27,11 @@ function App(props) {
           </a>
         </header>
         <Switch>
-          <PrivateRoute path='/bubbles'>
+          <PrivateRoute path='/colors'>
             <BubblePage/>
+          </PrivateRoute>
+          <PrivateRoute path='/colors/:id'>
+            <Color/>
           </PrivateRoute>
           <Route path='/login'>
             <Login/>
