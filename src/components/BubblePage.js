@@ -11,7 +11,10 @@ const BubblePage = () => {
   const [colors, setColors] = useState([]);
   const [editing, setEditing] = useState(false);
   useEffect(() => {
-    fetchColorService(setColors);
+    fetchColorService()
+    .then(res => setColors(res.data))
+    .catch(err => alert(err))
+    
   }, []);
 
   const toggleEdit = (value) => {
@@ -41,7 +44,6 @@ const BubblePage = () => {
   return (
     <div className="container">
       <ColorList
-        paramId={id}
         colors={colors}
         editing={editing}
         toggleEdit={toggleEdit}

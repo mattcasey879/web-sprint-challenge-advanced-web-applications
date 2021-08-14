@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import axiosWithAuth from "../helpers/axiosWithAuth";
 const Color = (props) => {
-  const { color, setEditColor, toggleEdit, deleteColor, paramId } = props;
+  const { color, setEditColor, toggleEdit, deleteColor } = props;
 
   const handleDelete = (e) => {
     e.preventDefault();
