@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import Login from "./components/Login";
 import BubblePage from "./components/BubblePage";
 import "./styles.scss";
 import axiosWithAuth from "./helpers/axiosWithAuth";
-import ColorList from "./components/ColorList";
 
 function App(props) {
 
@@ -34,7 +33,7 @@ function App(props) {
             <Login/>
           </Route>
           
-          <PrivateRoute path='/colors/:id' component={BubblePage}/>
+          <PrivateRoute path='/bubbles' component={BubblePage}/>
       </div>
     </Router>
   );

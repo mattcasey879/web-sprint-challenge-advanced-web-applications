@@ -18,7 +18,7 @@ const Color = (props) => {
 
   return (
     <li data-testid="color" id="color" onClick={handleEdit}>
-      <Link to={`/colors/${color.id}`}>
+      <Link to={`/bubbles/${color.id}`}>
         <span>
           <span className="delete" data-testid="delete" onClick={handleDelete}>
             x
