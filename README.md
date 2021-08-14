@@ -98,6 +98,14 @@ Your finished project must include all of the following requirements. **Unlike o
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Add your answers to the questions within `interview_answers.md` file. These will not be counted as a part of your sprint score but will be helpful for preparing you for your endorsement interview, and enhancing overall understanding.
 
 1. Explain what a token is used for.
+    A token gives a user access to certain parts of the app depending on their level in creditianls 
+
 2. What steps can you take in your web apps to keep your data secure?
+    Using a token, Using private routes that require authorozaiton, and Having a back end that uses the tokens for verification
 3. Describe how web servers work.
+    The front end sends a http request to certain endpoints that do certain tasks and the back end responds with data to use on the front end
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+    C-create is when we use a create object for headers and to use the baseURL (axios.create { baseURL: 'some api endpoint' headers: {...}})
+    R-read is when we do a get request to the server to recieve our data (axios.get)
+    U-update is when we do a put request to update data on a server (axios.put)
+    D-delete is when we do a delete request to remove certain data from a server (axios.delete)
