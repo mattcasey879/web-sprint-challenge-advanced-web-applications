@@ -1,30 +1,38 @@
-import React from 'react';
-
+import React from "react";
+import { Link } from "react-router-dom";
+import axiosWithAuth from "../helpers/axiosWithAuth";
 const Color = (props) => {
-    const {color, setEditColor, toggleEdit, deleteColor} = props;
+  const { color, setEditColor, toggleEdit, deleteColor, paramId } = props;
 
-    const handleDelete = (e) => {
-        e.stopPropagation();
-        deleteColor(color);
-        toggleEdit(false);
-    }
+  const handleDelete = (e) => {
+    e.preventDefault();
 
-    const handleEdit = (e) => {
-        setEditColor(color);
-        toggleEdit(true);
-    }
+    deleteColor(color);
+    toggleEdit(false);
+  };
 
-    return(<li data-testid="color" id="color" onClick={handleEdit}>
+  const handleEdit = (e) => {
+    e.preventDefault();
+    setEditColor(color);
+    toggleEdit(true);
+  };
 
+  return (
+    <li data-testid="color" id="color" onClick={handleEdit}>
+      <Link to={`/colors/${color.id}`}>
         <span>
-            <span className="delete" data-testid="delete" onClick={handleDelete}>x</span>
-            {` ${color.color}`}
+          <span className="delete" data-testid="delete" onClick={handleDelete}>
+            x
+          </span>
+          {`${color.color}`}
         </span>
-        <div 
-            className="color-box"
-            style={{ backgroundColor: color.code.hex }}
+        <div
+          className="color-box"
+          style={{ backgroundColor: color.code.hex }}
         />
-    </li>);
-}
+      </Link>
+    </li>
+  );
+};
 
 export default Color;

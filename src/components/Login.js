@@ -31,7 +31,7 @@ const Login = (props) => {
     .then(res => {
       console.log(res.data.payload)
       localStorage.setItem('token', res.data.payload)
-      push('/colors')
+      push('/colors/1')
       setError(false)
     })
     .catch(err => 
