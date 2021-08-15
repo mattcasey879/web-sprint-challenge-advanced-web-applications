@@ -7,15 +7,15 @@ import "./styles.scss";
 import axiosWithAuth from "./helpers/axiosWithAuth";
 
 function App(props) {
+
   const handleLogout = () => {
     axiosWithAuth()
-      .post("/logout")
-      .then((res) => {
-        localStorage.removeItem("token");
-        window.location.href("/");
-      })
-      .catch((err) => console.log(err));
-  };
+    .post('/logout')
+    .then(res => {
+      localStorage.removeItem('token')
+      window.location.href('/')})
+    .catch(err => console.log(err))
+  }
   return (
     <Router>
       <div className="App">
@@ -25,12 +25,12 @@ function App(props) {
             logout
           </a>
         </header>
-
-        <Route exact path="/">
-          <Login />
-        </Route>
-
-        <PrivateRoute path="/bubbles" component={BubblePage} />
+          
+          <Route exact path='/'>
+            <Login/>
+          </Route>
+          
+          <PrivateRoute path='/bubbles' component={BubblePage}/>
       </div>
     </Router>
   );
