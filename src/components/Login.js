@@ -1,4 +1,4 @@
-import React, { useState, } from "react";
+import React, { useEffect, useState, } from "react";
 import { useHistory } from "react-router-dom";
 import axiosWithAuth from "../helpers/axiosWithAuth";
 
@@ -16,7 +16,9 @@ const Login = (props) => {
 
   const errorMsg = "Username or password not valid";
   //replace with error state
-
+useEffect(() => {
+  setError(false)
+},[])
   const handleChange = (e) => {
     setCred({
       ...cred,
@@ -29,10 +31,9 @@ const Login = (props) => {
     axiosWithAuth()
     .post('/login', cred)
     .then(res => {
-      console.log(res.data.payload)
       localStorage.setItem('token', res.data.payload)
-      push('/bubbles')
       setError(false)
+      push('/bubbles/1')
     })
     .catch(err => 
       {console.log(err) 

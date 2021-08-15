@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 import fetchColorService from "../services/fetchColorService";
 import axiosWithAuth from "../helpers/axiosWithAuth";
 
 const BubblePage = () => {
-  const { id } = useParams();
 
   const [colors, setColors] = useState([]);
   const [editing, setEditing] = useState(false);
   useEffect(() => {
-    fetchColorService()
+    const fetchColors = () => {
+     fetchColorService()
     .then(res => setColors(res.data))
-    .catch(err => alert(err))
+    .catch(err => alert(err)) 
+    }
     
+    fetchColors()
   }, []);
 
   const toggleEdit = (value) => {
@@ -24,7 +25,7 @@ const BubblePage = () => {
   const saveEdit = (editColor) => {
     const updatedColors = colors.filter((color) => color.id !== editColor.id);
     axiosWithAuth()
-      .put(`/colors/${id}`, editColor)
+      .put(`/colors/${editColor.id}`, editColor)
       .then((res) => {
         setColors([...updatedColors, res.data]);
       })
@@ -33,7 +34,7 @@ const BubblePage = () => {
 
   const deleteColor = (colorToDelete) => {
     axiosWithAuth()
-    .delete(`/colors/${id}`)
+    .delete(`/colors/${colorToDelete.id}`)
     .then(res => console.log(res))
     .catch(err => console.log(err))
     const updatedColors = colors.filter(
